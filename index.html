@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap" rel="stylesheet">
+    <title>Wedding RSVP</title>
+    <style>
+        body {
+            font-family: 'Fraunces', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0d9d7;
+            color: #4b3f37;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            color: #6b705c;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        header p {
+            font-size: 1.2rem;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+            position: relative;
+        }
+        .picture-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px; /* Adjust max-width for the couple's picture */
+            height: auto; /* Adjust height for proportional centering */
+            margin-bottom: 150px;
+            display: flex; /* Enable flexbox */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+        }
+        .background-image {
+            position: absolute;
+            top: 5;
+            left: 0;
+            width: 800px;
+            height: 800px;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.7;
+        }
+        img {
+            max-width: 100%;
+            width: 300px;
+            position: relative;
+            z-index: 1; /* Higher z-index to bring it to the front */
+            border-radius: 15px;
+        }
+        button {
+            background-color: #ff6f61;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-family: 'Fraunces', serif;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background-color: #f2c6c2;
+            transform: scale(1.05);
+        }
+        section {
+            margin: 20px;
+            text-align: center;
+        }
+        .registry {
+            margin-top: 40px;
+            padding: 25px;
+            border-radius: 15px;
+        }
+        .registry h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #6b705c;
+        }
+        .registry a {
+            display: block;
+            margin: 10px 0;
+            color: #4b3f37;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .registry a:hover {
+            color: #f2c6c2;
+        }
+        .registry img {
+            max-width: 200px;
+            margin: 10px;
+            border: 2px solid #d8e2dc;
+            border-radius: 10px;
+        }
+        .countdown-container {
+            text-align: center;
+            margin: 20px;
+        }
+        .countdown-title {
+            font-size: 1.5rem;
+            font-family: 'Fraunces', serif;
+            color: #6b705c;
+            margin-bottom: 10px;
+        }
+        .countdown {
+            font-size: 2rem;
+            color: #6b705c;
+            padding: 15px;
+        }
+        .floral-decor {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100px;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        .floral-decor.left {
+            left: 0;
+            background-image: url('./resources/floral-left.png');
+        }
+        .floral-decor.right {
+            right: 0;
+            background-image: url('./resources/floral-right.png');
+        }
+        .registry-links {
+        display: flex;
+        justify-content: center; /* Center the links horizontally */
+        gap: 20px; /* Add space between the links */
+        margin-top: 10px;
+        }
+
+        .registry-links a {
+        color: #4b3f37;
+        font-size: 1.2rem;
+        text-decoration: none;
+        padding: 10px 20px;
+        
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        }
+
+        .registry-links a:hover {
+        
+        color: white;
+        }
+    </style>
+    <script>
+        function updateCountdown() {
+            const weddingDate = new Date('June 7, 2025 17:00:00');
+            const now = new Date();
+            const timeDifference = weddingDate - now;
+
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').textContent = `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+        }
+
+        setInterval(updateCountdown, 1000);
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Christian and Lauren</h1>
+        <p>Invite you to RSVP</p>
+    </header>
+
+    <main>
+        <div class="floral-decor left"></div>
+        <div class="floral-decor right"></div>
+
+        <div class="picture-container">
+            <!-- Background Image -->
+            <img src="./resources/1.png" class="background-image" alt="Background Image">
+            <!-- Couple's Picture -->
+            <img src="./resources/DSC_0753.JPG" class="img" alt="A beautiful picture of the couple">
+        </div>
+        
+        <!-- Updated Button -->
+        <button onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSf_m9RSUQfxcvEH1jrS4bgL_PBcTXnlupBAVGEil6pm7d_qbg/viewform?usp=header';">RSVP</button>
+
+        <div class="countdown-container">
+            <div class="countdown-title">Time until the big day:</div>
+            <div id="countdown" class="countdown">Calculating...</div>
+        </div>
+
+        <section class="registry">
+            <h2>Our Registry</h2>
+            <div class="registry-links">
+                <a href="https://www.honeyfund.com/site/sherrod-valdez-06-07-2025" target="_blank">Honeyfund</a>
+                <a href="https://www.amazon.com/wedding/registry/12LLSQ3MGOM0P" target="_blank">Amazon</a>
+                <a href="https://www.target.com/gift-registry/gift/sherrodvaldez1" target="_blank">Target</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
